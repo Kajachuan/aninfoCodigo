@@ -1,4 +1,4 @@
-package fiuba;
+package aninfo;
 
 /**
  * Created by nicopaez on 5/16/17.

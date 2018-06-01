@@ -1,4 +1,4 @@
-package fiuba;
+package aninfo;
 
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
@@ -6,6 +6,9 @@ import cucumber.api.java.es.Entonces;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
+import aninfo.FachadaBanco;
+
 import static org.junit.Assert.assertFalse;
 
 /**

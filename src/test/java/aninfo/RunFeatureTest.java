@@ -1,4 +1,4 @@
-package fiuba;
+package aninfo;
 
 
 import cucumber.api.CucumberOptions;
