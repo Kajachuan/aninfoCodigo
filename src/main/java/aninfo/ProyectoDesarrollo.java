@@ -7,10 +7,12 @@ public class ProyectoDesarrollo {
 	private int id;
 	private List<Rol> roles;
 	private String nombre;
+	private Fase faseActual;
     
 	public ProyectoDesarrollo(int id) {
 		this.id = id;
 		this.roles = new ArrayList<Rol>();
+		this.faseActual = new Fase("Inicio");
 	}
 
 	public void asignarEmpleadoConRol(Empleado empleado, String nombreRol) {
@@ -53,5 +55,9 @@ public class ProyectoDesarrollo {
 
 	public String consultarNombre() {
 		return nombre;
+	}
+
+	public Fase consultarFaseActual() {
+		return faseActual;
 	}
 }

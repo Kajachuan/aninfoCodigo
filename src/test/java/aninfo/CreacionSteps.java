@@ -67,4 +67,19 @@ public class CreacionSteps {
 	public void el_proyecto_tiene_el_nombre(int id, String nombre) throws Throwable {
 		assertEquals(nombre, proyectos.get(id).consultarNombre());
 	}
+	
+	@Entonces("^el proyecto creado con id (\\d+) tiene la fase \"(.*?)\"$")
+	public void el_proyecto_creado_con_id_tiene_la_fase(int id, String nombreFase) throws Throwable {
+	    assertEquals(nombreFase, proyectos.get(id).consultarFaseActual().consultarNombre());
+	}
+	
+	@Entonces("^la iteración actual de la fase \"(.*?)\" en el proyecto (\\d+) es \"(.*?)\"$")
+	public void la_iteración_actual_de_la_fase_en_el_proyecto_es(String nombreFase, int id, String nombreIter) throws Throwable {
+	    assertEquals(nombreIter, proyectos.get(id).consultarFaseActual().consultarIteracionActual().consultarNombre());
+	}
+	
+	@Entonces("^la tarea actual en el proyecto (\\d+) es \"(.*?)\"$")
+	public void la_tarea_actual_en_el_proyecto_es(int id, String nombreTarea) throws Throwable {
+	    assertEquals(nombreTarea, proyectos.get(id).consultarFaseActual().consultarIteracionActual().consultarTareaActual().consultarNombre());
+	}
 }
