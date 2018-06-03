@@ -14,9 +14,9 @@ Característica: Asignación de empleados a proyectos
     | "Deciancio" | "Senior programmer" |
     | "Payaslian" | "Support engineer"  |
 
-  Escenario: Consultar lista de empleados en el proyecto
+  Esquema del escenario: Asignar una lista de empleados en el proyecto
     Dado un proyecto de desarrollo existente
-  	Cuando asigno una lista de empleados con rol "Senior programmer"
+  	Cuando asigno una lista de empleados con rol <rol>
   	  | "Arturi"    |
   	  | "Avigliano" |
   	  | "Cajachuán" |
@@ -28,4 +28,26 @@ Característica: Asignación de empleados a proyectos
   	  | "Cajachuán" |
   	  | "Deciancio" |
   	  | "Payaslian" |
-  	
+  	  
+  Ejemplos:
+    | rol |
+    | "Project Manager"   |
+    | "Analyst"           |
+    | "Senior consultant" |
+    | "Senior programmer" |
+    | "Support engineer"  |
+    
+  Esquema del escenario: Asignar empleado a dos proyectos con dos roles distintos
+    Dado un proyecto "1" y un proyecto "2"
+    Cuando asigno a <empleado> al proyecto "1" con rol <rol1>
+    Y asigno a <empleado> al proyecto "2" con rol <rol2>
+    Entonces el rol de <empleado> en el proyecto "1" es <rol1>
+    Y el rol de <empleado> en el proyecto "2" es <rol2>
+    
+  Ejemplos:
+    | empleado    | rol1                | rol2                |
+    | "Arturi"    | "Project Manager"   | "Analyst"           |
+    | "Avigliano" | "Analyst"           | "Senior consultant" |
+    | "Cajachuán" | "Senior consultant" | "Senior programmer" |
+    | "Deciancio" | "Senior programmer" | "Support engineer"  |
+    | "Payaslian" | "Support engineer"  | "Project Manager"   |
