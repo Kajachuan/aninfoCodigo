@@ -27,4 +27,18 @@ public class ProyectoDesarrollo {
 		
 		return "Empleado no asignado";
 	}
+
+	public void asignarListaDeEmpleadosConRol(List<Empleado> empleados, String nombreRol) {
+		for(Empleado empleado : empleados) {
+			asignarEmpleadoConRol(empleado, nombreRol);
+		}
+	}
+
+	public List<String> consultarListaDeEmpleados() {
+		List<String> empleados = new ArrayList<String>();
+		for(Rol rol : roles) {
+			empleados.add(rol.consultarNombre());
+		}
+		return empleados;
+	}
 }
