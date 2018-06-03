@@ -6,6 +6,7 @@ import java.util.List;
 public class ProyectoDesarrollo {
 	private int id;
 	private List<Rol> roles;
+	private String nombre;
     
 	public ProyectoDesarrollo(int id) {
 		this.id = id;
@@ -44,5 +45,13 @@ public class ProyectoDesarrollo {
 
 	public int consultarId() {
 		return id;
+	}
+
+	public void agregarNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String consultarNombre() {
+		return nombre;
 	}
 }

@@ -5,9 +5,12 @@ import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class CreacionSteps {
 	
@@ -20,14 +23,48 @@ public class CreacionSteps {
 		gestorProyectos.agregarCargo("Gestor de Proyectos");
 	}
 
-	@Cuando("^creo un proyecto con id (\\d+)$")
-	public void creo_un_proyecto_con_id(int id) throws Throwable {
-	    ProyectoDesarrollo proyecto = new ProyectoDesarrollo(id);
-	    proyectos.put(id, proyecto);
+	@Cuando("^crea un proyecto con id (\\d+)$")
+	public void crea_un_proyecto_con_id(int id) throws Throwable {
+		if(!proyectos.containsKey(id)); {
+		    ProyectoDesarrollo proyecto = new ProyectoDesarrollo(id);
+		    proyectos.put(id, proyecto);
+		}
 	}
 
 	@Entonces("^el proyecto se guarda con id (\\d+)$")
 	public void el_proyecto_se_guarda_con_id(int id) throws Throwable {
 	    assertEquals(id, proyectos.get(id).consultarId());
+	}
+	
+	@Cuando("^crea los proyectos de la lista$")
+	public void crea_los_proyectos_de_la_lista(List<Integer> listaProyectos) throws Throwable {
+	    for(int id : listaProyectos) {
+	    	ProyectoDesarrollo proyecto = new ProyectoDesarrollo(id);
+	    	proyectos.put(id, proyecto);
+	    }
+	}
+
+	@Entonces("^todos los proyectos son los de la lista$")
+	public void todos_los_proyectos_son_los_de_la_lista(List<Integer> listaProyectos) throws Throwable {
+	    boolean ok = true;
+	    Set<Integer> guardados = proyectos.keySet();
+	    for(int id : guardados) {
+	    	if(!listaProyectos.contains(id)) ok = false;
+	    }
+	    if(guardados.size() != listaProyectos.size()) ok = false;
+	    
+		assertTrue(ok);
+	}
+	
+	@Cuando("^agrega el nombre \"(.*?)\" al proyecto (\\d+)$")
+	public void agrega_el_nombre_al_proyecto(String nombre, int id) throws Throwable {
+	    ProyectoDesarrollo proyecto = new ProyectoDesarrollo(id);
+	    proyectos.put(id, proyecto);
+	    proyectos.get(id).agregarNombre(nombre);
+	}
+
+	@Entonces("^el proyecto (\\d+) tiene el nombre \"(.*?)\"$")
+	public void el_proyecto_tiene_el_nombre(int id, String nombre) throws Throwable {
+		assertEquals(nombre, proyectos.get(id).consultarNombre());
 	}
 }
