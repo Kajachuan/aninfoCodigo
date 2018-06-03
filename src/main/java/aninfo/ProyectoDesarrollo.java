@@ -41,4 +41,8 @@ public class ProyectoDesarrollo {
 		}
 		return empleados;
 	}
+
+	public int consultarId() {
+		return id;
+	}
 }

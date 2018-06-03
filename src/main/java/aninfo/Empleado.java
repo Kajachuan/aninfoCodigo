@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Empleado {
 	private String nombre;
+	private String cargo;
 	private List<Rol> roles;
 	
 	public Empleado(String nombre) {
@@ -18,5 +19,9 @@ public class Empleado {
 
 	public void añadirRol(Rol rol) {
 		roles.add(rol);
+	}
+
+	public void agregarCargo(String cargo) {
+		this.cargo = cargo;
 	}
 }
